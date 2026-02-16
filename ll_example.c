@@ -38,7 +38,8 @@ int main( void )
 
    instructions(); // display the menu
    printf( "%s", "? " );
-   choice = getValidInput();
+   scanf( "%u", &choice );
+   //  choice = getValidInput();
 
    // loop while user does not choose 3
    while ( choice != 3 ) { 
@@ -83,7 +84,7 @@ int main( void )
       } // end switch
 
       printf( "%s", "? " );
-      choice = getValidInput();
+       scanf( "%u", &choice );
    } // end while
   /* Clear all nodes at the end of nodes*/
    clearList( &startPtr );
