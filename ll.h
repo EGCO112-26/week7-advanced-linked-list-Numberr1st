@@ -112,6 +112,9 @@ int deletes( LLPtr *sPtr, int id )
          tempPtr = currentPtr;
          currentPtr = currentPtr->nextPtr;
          previousPtr->nextPtr = currentPtr->nextPtr;
+         if (currentPtr != NULL) {
+            currentPtr->pPtr = previousPtr;
+         }
          free( tempPtr );
          return id;
       } // end if
@@ -155,8 +158,7 @@ void printListR( LLPtr currentPtr ){
       puts( "List is empty.\n" );
    } // end if
    else {
-    //  puts( "The list is (reverse):" );
-
+     //Reverse print the list
       // find last position
       while (currentPtr->nextPtr != NULL){
          currentPtr = currentPtr->nextPtr;
