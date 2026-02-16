@@ -45,12 +45,12 @@ int main( void )
 
       switch ( choice ) { 
          case 1:
-            printf( "%s", "Enter ID: " );
-            scanf( "%d", &id );
+            printf( "%s", "Enter ID Name: " );
+            scanf( "%d %s", &id, name );
             getchar(); // consume newline
-            printf( "%s", "Enter name: " );
+            /* printf( "%s", "Enter name: " );
             fgets( name, sizeof(name), stdin );
-            name[strcspn(name, "\n")] = 0; // remove newline
+            name[strcspn(name, "\n")] = 0; // remove newline */
             insert( &startPtr, id, name ); // insert item in list
             printList( startPtr );
             printListR( startPtr );
