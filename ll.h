@@ -89,15 +89,16 @@ int deletes( LLPtr *sPtr, int id )
    LLPtr tempPtr; // temporary node pointer
 
    // delete first node
-   if ( id == ( *sPtr )->id ) {
+   if ( *sPtr != NULL && id == ( *sPtr )->id ) {
       tempPtr = *sPtr; // hold onto node being removed
       *sPtr = ( *sPtr )->nextPtr; // de-thread the node
-      if(*sPtr) (*sPtr)->pPtr=NULL;
-
+      if ( *sPtr != NULL ) {
+         (*sPtr)->pPtr = NULL;
+      }
       free( tempPtr ); // free the de-threaded node
       return id;
    } // end if
-   else {
+   else if ( *sPtr != NULL ) {
       previousPtr = *sPtr;
       currentPtr = ( *sPtr )->nextPtr;
 
@@ -110,15 +111,14 @@ int deletes( LLPtr *sPtr, int id )
       // delete node at currentPtr
       if ( currentPtr != NULL ) {
          tempPtr = currentPtr;
-         currentPtr = currentPtr->nextPtr;
          previousPtr->nextPtr = currentPtr->nextPtr;
-         if (currentPtr != NULL) {
-            currentPtr->pPtr = previousPtr;
+         if ( currentPtr->nextPtr != NULL ) {
+            currentPtr->nextPtr->pPtr = previousPtr;
          }
          free( tempPtr );
          return id;
       } // end if
-   } // end else
+   } // end else if
 
    return 0;
 } // end function delete
