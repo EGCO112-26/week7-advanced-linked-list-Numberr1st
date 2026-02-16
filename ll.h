@@ -155,7 +155,7 @@ void printListR( LLPtr currentPtr ){
       puts( "List is empty.\n" );
    } // end if
    else {
-      puts( "The list is (reverse):" );
+    //  puts( "The list is (reverse):" );
 
       // find last position
       while (currentPtr->nextPtr != NULL){
